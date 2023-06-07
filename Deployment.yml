@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mydeployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      name: testpod
+      labels:
+        myname: Uzair
+        env: dev
+    spec:
+      containers:
+        - name: c00
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo Hey_Uzair; sleep 5; done"]
