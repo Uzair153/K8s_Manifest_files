@@ -1,0 +1,25 @@
+
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: myrs
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: myname
+        operator: In
+        values: [uzair, ali, abdullah]
+      - key: env
+        operator: NotIn
+        values: [production]
+  template:
+    metadata:
+      name: testpod
+      labels:
+        myname: Uzair
+    spec:
+      containers:
+        - name: c00
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo Hey_Uzair; sleep 5; done"]
