@@ -1,0 +1,22 @@
+# ==============================NAMESPACES===================================
+apiVersion: v1
+kind: Namespace
+metadata:
+   name: dev
+   labels:
+     name: dev
+
+# =================================to create a pod=================
+# vi pod.yml
+
+
+kind: Pod                              
+apiVersion: v1                     
+metadata:                           
+  name: testpod                  
+spec:                                    
+  containers:                      
+    - name: c00                     
+      image: ubuntu              
+      command: ["/bin/bash", "-c", "while true; do echo Uzair Sheikh; sleep 5 ; done"]
+  restartPolicy: Never       
